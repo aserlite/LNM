@@ -18,13 +18,7 @@ use App\Http\Controllers\MainController;
 |
 */
 
-Route::get('/', function () {
-    if(session("login")){
-        return view('articles');
-    }else{
-        return view('login');
-    }
-});
+Route::get('/', [MainController::class, 'index']);
 
 Route::get('/index', [MainController::class, 'index']);
 

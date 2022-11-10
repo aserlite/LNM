@@ -7,12 +7,10 @@
     <title>Instagram</title>
     <link href="/css/normalize.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-    <link href="/public/css/style.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
     @section('css')
 
     @show
-
-
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 
 </head>
@@ -26,10 +24,5 @@
   <section class="content">
     @yield('content')
   </section>
-
-@section('bottomMenu')
-  @include('layouts.bottomMenu')
-@show
-
 </body>
 </html>

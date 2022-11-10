@@ -18,10 +18,16 @@ class Users extends Controller
         return view('page2');
     }
     function login(){
+        if(session('login')){
+            return redirect('/articles');
+        }
         return view('login');
     }
 
     function loginT(){
+        if(session('login')){
+            return redirect('/articles');
+        }
         if (!isset($_POST['mail']) || !isset($_POST['pwd'])) {
             return redirect('/login');    
         } else {
@@ -50,10 +56,16 @@ class Users extends Controller
     }
 
     function register(){
+        if(session('login')){
+            return redirect('/articles');
+        }
         return view('register');
     }
 
     function registerT(){
+        if(session('login')){
+            return redirect('/articles');
+        }
     echo "ts";
         if (!isset($_POST['inscription']) ||
     !isset($_POST['pwd']) ||
