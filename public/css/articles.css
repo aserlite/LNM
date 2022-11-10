@@ -1,0 +1,33 @@
+
+article.post {
+  margin-bottom: 20px;
+}
+
+article.post .auteur {
+  display: inline-block;
+  font-size: 1.4rem;
+  padding: 5px;
+}
+
+article.post img {
+  width: 100%;
+}
+
+article.post h3 {
+  font-size: 1.8rem;
+}
+
+article.post .desc {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+article.post .tags {
+  font-size: 1.4rem;
+  flex-grow: 1;
+}
+
+article.post .bx {
+  font-size: 3.8rem;
+}

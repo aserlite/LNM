@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+
+
+
+* {
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  padding: 0 5% ;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* section titre */
+
+.title {
+  text-align: center;
+}
+
+.title h1{
+  display: inline-block;
+  font-size: 6rem;
+  font-family: 'Dancing Script', cursive;
+}
+
+.title h1 > span {
+  display: block;
+  text-align: right;
+  font-size: 1.2rem;
+  font-weight: 200;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+/* section contenu */
+.content {
+  flex-grow: 1;
+}
+
+.content form {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.4rem;
+}
+
+.content input {
+  line-height: 25px;
+  margin: 5px 0px;
+  padding: 5px 15px;
+}
+
+.content input[type=submit] {
+  background-color: #6495ED;
+  color:white;
+  border: none;
+  margin-top: 25px;
+}
+
+.rememberme {
+  display: flex;
+  align-items: center;
+}
+
+.content input[type=checkbox] {
+  margin-right: 10px;
+}
+
+.content div:last-of-type {
+  margin-top: 50px;
+  font-size: 1.2rem;
+}
+
+.content div:last-of-type a {
+  text-decoration: none;
+  color: #6495ED;
+  font-weight: 500;
+}
+
+/* Le footer */
+
+.footer a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.footer img {
+  max-height: 50px;
+}
+
+.footer span {
+  text-transform: uppercase;
+  color: 	#A0A0A0;
+}
