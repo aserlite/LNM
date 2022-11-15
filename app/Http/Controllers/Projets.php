@@ -31,9 +31,11 @@ class Projets extends Controller
             move_uploaded_file( $_FILES['img']['tmp_name'],$file);
 
             $p = new projetsDB();
+            $p ->idAuteur = session('id');
             $p ->titre = $_POST['nom'];
             $p ->img_url=$file;
-            $p ->year=$_POST['anneeReal'];
+            $p ->dateEcrit=date("Y-m-d H:i:s");
+            $p ->anneeReal=$_POST['anneeReal'];
             if(isset($_POST['lien'])){
                 $p ->lien=$_POST['lien'];
             }
