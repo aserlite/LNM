@@ -21,19 +21,22 @@ class Projets extends Controller
         !isset($_FILES['img']) ) {
         return redirect('/index');
         } else {
-            if ($_FILES['img']['error'] != 0 || $_FILES['img']['type'] != 'image/jpeg'){
-            return redirect('/index');
+            if ($_FILES['img']['error'] != 0){
+            return redirect('/erreur2');
         } else {
-            $dirname = "./public/upload";
-            $filename = $_SESSION['id'] . "_" . time();
+            $dirname = "./upload";
+            $filename = session('id') . "_" . time();
             $extension = pathinfo($_FILES['img']['name'], PATHINFO_EXTENSION);
             $file = $dirname . "/" . $filename . "." . $extension;
             move_uploaded_file( $_FILES['img']['tmp_name'],$file);
 
             $p = new projetsDB();
-            $p ->titre = $_POST['titre'];
+            $p ->titre = $_POST['nom'];
             $p ->img_url=$file;
-            $p ->year=$_POST['year'];
+            $p ->year=$_POST['anneeReal'];
+            if(isset($_POST['lien'])){
+                $p ->lien=$_POST['lien'];
+            }
             $p ->save();
             return redirect('/index');
   }

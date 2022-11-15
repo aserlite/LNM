@@ -8,6 +8,7 @@
   <div class="publish">
   <h3>Envie de faire partie de La Nuit MMI ?</h3>
   <span class="callToAction">Partagez Votre Projet</span>
+  
   <form action='/publishT' method='POST' enctype="multipart/form-data">
     <input type='text' name='nom' placeholder='Nom de votre Projet'>
     @csrf
