@@ -31,14 +31,15 @@
 }
 
 label.file .bx {
-  color: white;
+  color: #180630;
+  background: transparent;
   font-size: 2rem;
   margin-right: 10px;
 }
 
 .content > .publish input[type=submit], .file {
-  background-color: #6495ED;
-  color:white;
+  background-color: #fefadd;
+  color:#180630;
   border: none;
 }
 .content > .publish input[type=submit] {

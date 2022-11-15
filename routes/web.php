@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Users;
-use App\Http\Controllers\Articles;
+use App\Http\Controllers\Projets;
 use App\Http\Controllers\Sub;
 use App\Http\Controllers\MainController;
 
@@ -28,5 +28,11 @@ Route::post('/loginT', [Users::class, 'loginT']);
 Route::get('/register',[Users::class, 'register']);
 Route::post('/registerT', [Users::class, 'registerT']);
 
-Route::get('/publish',[Articles::class, 'publish']);
+Route::get('/logout',[Users::class, 'logout']);
+
+Route::get('/publish',[Projets::class, 'publish']);
+Route::post('/publishT',[Projets::class, 'publishT']);
+
 Route::get('/test',[Users::class,'test']);
+
+Route::get('projets',[Projets::class,'afficher']);

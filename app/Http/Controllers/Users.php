@@ -19,14 +19,14 @@ class Users extends Controller
     }
     function login(){
         if(session('login')){
-            return redirect('/articles');
+            return redirect('/projets');
         }
         return view('login');
     }
 
     function loginT(){
         if(session('login')){
-            return redirect('/articles');
+            return redirect('/projets');
         }
         if (!isset($_POST['mail']) || !isset($_POST['pwd'])) {
             return redirect('/login');    
@@ -47,7 +47,7 @@ class Users extends Controller
                   setcookie('token', $token, time() - 3600 );
               }
               UsersDB::where('id',$user->first()->id)->update(['remember'=>$token]);
-                return redirect('/articles');    
+                return redirect('/projets');    
             } else {
               
               return redirect('/login');    
@@ -57,14 +57,14 @@ class Users extends Controller
 
     function register(){
         if(session('login')){
-            return redirect('/articles');
+            return redirect('/projets');
         }
         return view('register');
     }
 
     function registerT(){
         if(session('login')){
-            return redirect('/articles');
+            return redirect('/projets');
         }
     echo "ts";
         if (!isset($_POST['inscription']) ||
@@ -72,6 +72,7 @@ class Users extends Controller
     !isset($_POST['pwd1']) ||
     !isset($_POST['login']) ||
     !isset($_POST['mail'])  ||
+    !isset($_POST['year'])  ||
     filter_var($_POST['mail'],FILTER_VALIDATE_EMAIL) === false ||
     $_POST['pwd'] != $_POST['pwd1'] ) {
       header('location: /register');
@@ -80,6 +81,7 @@ class Users extends Controller
         $u ->login =  $_POST['login'];
         $u ->mdp = sha1($_POST['pwd']);
         $u ->email=$_POST['mail'];
+        $u ->year=$_POST['year'];
         $u ->save();
         $id=$u->id;
         echo $id;
@@ -90,6 +92,10 @@ class Users extends Controller
     return redirect('/register');    
     }
         
+    public function logout(){
+    session()->flush();
+    return redirect('/login');    
+    }
         
 
     }
