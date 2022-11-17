@@ -35,4 +35,6 @@ Route::post('/publishT',[Projets::class, 'publishT']);
 
 Route::get('/test',[Users::class,'test']);
 
-Route::get('projets',[Projets::class,'afficher']);
+Route::get('projets/{i}',[Projets::class,'afficher']);
+Route::get('projets',[Projets::class,'redirectP']);
+Route::get('projects',[Projets::class,'redirectP']);

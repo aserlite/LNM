@@ -59,10 +59,6 @@ label.file .bx {
   border-radius: 5px;
   font-weight: bold;
 }
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none;
-}
 
 input[type="number"] {
   -webkit-appearance: textfield;

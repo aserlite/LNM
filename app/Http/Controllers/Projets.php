@@ -8,8 +8,14 @@ use App\Models\projetsDB;
 
 class Projets extends Controller
 {
-    public function afficher(){
-        return view('projets');
+    public function afficher($i){
+        $nbskip=$i*10-10;
+        $projets=ProjetsDB::orderby('dateEcrit', 'asc')->skip($nbskip)->take(10)->get();
+        return view('projets',['projets'=>$projets,'nbpage'=>$i,'url'=>url("/projets/")."/"]);
+    }
+
+    public function redirectP(){
+        return redirect('/projets/1');
     }
     public function publish(){
         if(session('id')){
