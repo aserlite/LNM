@@ -18,14 +18,14 @@ class Users extends Controller
         return view('page2');
     }
     function login(){
-        if(session('login')){
+        if(session('id')){
             return redirect('/projets');
         }
         return view('login');
     }
 
     function loginT(){
-        if(session('login')){
+        if(session('id')){
             return redirect('/projets');
         }
         if (!isset($_POST['mail']) || !isset($_POST['pwd'])) {
@@ -37,7 +37,6 @@ class Users extends Controller
           
             if ($user->count() === 1) {
                 session()->put('id',$user->first()->id);
-                session()->put('login',$user->first()->login);
 
               if (isset($_POST['rememberme'])) {
                   $token = bin2hex(random_bytes(20));
@@ -56,21 +55,22 @@ class Users extends Controller
     }
 
     function register(){
-        if(session('login')){
+        if(session('id')){
             return redirect('/projets');
         }
         return view('register');
     }
 
     function registerT(){
-        if(session('login')){
+        if(session('id')){
             return redirect('/projets');
         }
     echo "ts";
         if (!isset($_POST['inscription']) ||
     !isset($_POST['pwd']) ||
     !isset($_POST['pwd1']) ||
-    !isset($_POST['login']) ||
+    !isset($_POST['Prenom']) ||
+    !isset($_POST['Nom']) ||
     !isset($_POST['mail'])  ||
     !isset($_POST['year'])  ||
     filter_var($_POST['mail'],FILTER_VALIDATE_EMAIL) === false ||
@@ -78,15 +78,16 @@ class Users extends Controller
       header('location: /register');
     } else {
         $u= new UsersDB();
-        $u ->login =  $_POST['login'];
+        $u ->nom =  $_POST['Nom'];
+        $u ->prenom =  $_POST['Prenom'];
         $u ->mdp = sha1($_POST['pwd']);
         $u ->email=$_POST['mail'];
         $u ->year=$_POST['year'];
+        $u->CreationCompte = date("Y-m-d H:i:s");
         $u ->save();
         $id=$u->id;
         echo $id;
         session()->put('id',$id);
-        session()->put('login',$_POST['login']);
         return redirect('/index');
     }
     return redirect('/register');    

@@ -5,7 +5,8 @@
   <form action='/registerT' method='POST'>
     @csrf
     <input type='mail' name='mail' placeholder='e-mail' required class="champsform">
-    <input type='text' name='login' placeholder='login' required class="champsform">
+    <input type='text' name='Prenom' placeholder='Prenom' required class="champsform">
+    <input type='text' name='Nom' placeholder='Nom' required class="champsform">
     <input type='password' name='pwd' placeholder='Mot de passe' required class="champsform">
     <input type='password' name='pwd1' placeholder='Confirmation du mot de passe' required class="champsform">
     <select name="year" required>

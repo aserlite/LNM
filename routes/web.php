@@ -38,3 +38,5 @@ Route::get('/test',[Users::class,'test']);
 Route::get('projets/{i}',[Projets::class,'afficher']);
 Route::get('projets',[Projets::class,'redirectP']);
 Route::get('projects',[Projets::class,'redirectP']);
+
+Route::get('createur/{i}',[Projets::class,'afficherCreations']);

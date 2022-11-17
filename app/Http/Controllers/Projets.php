@@ -5,12 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\projetsDB;
+use App\Models\UsersDB;
 
 class Projets extends Controller
 {
     public function afficher($i){
         $nbskip=$i*10-10;
-        $projets=ProjetsDB::orderby('dateEcrit', 'asc')->skip($nbskip)->take(10)->get();
+        $projets=ProjetsDB::select("projets.*","user.nom as nom","user.prenom as prenom")
+                            ->orderby('dateEcrit', 'desc')
+                            ->skip($nbskip)
+                            ->take(10)
+                            ->join('user','user.id','=','projets.idAuteur')
+                            ->get();
         return view('projets',['projets'=>$projets,'nbpage'=>$i,'url'=>url("/projets/")."/"]);
     }
 
@@ -49,12 +55,25 @@ class Projets extends Controller
             if (isset($_POST['anonyme'])){
                 $p ->anonyme=TRUE;
             }
-            if(isset($_POST['lien'])){
+            if(isset($_POST['lien']) AND filter_var($_POST['lien'], FILTER_VALIDATE_URL)){
                 $p ->lien=$_POST['lien'];
             }
             $p ->save();
             return redirect('/index');
-  }
-}
+            }
+        }
+    }    
+    public function afficherCreations($i){
+        $projets=ProjetsDB::where('idAuteur', '=', $i)
+                            ->orderby('dateEcrit', 'asc')
+                            ->get();
+        $auteur=UsersDB::where('id', '=', $i)->get();
+        $auteur=$auteur->first();
+        if(isset($auteur)){
+            return view('createur',['projets'=>$projets,'auteur'=> $auteur]);
+        }else{
+            return redirect('/projets');
+        }
+
     }
 }
