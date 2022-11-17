@@ -7,7 +7,11 @@ use Illuminate\Http\Request;
 class MainController extends Controller
 {
     public function index(){
-        var_dump(session('id'));
-        return view('index');
+        if(session('id')){
+            return view('index');
+        }else{
+            return view('login');
+        }
+        
     }
 }

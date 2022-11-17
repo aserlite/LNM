@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
-
+@font-face {
+  font-family: Futuristic;
+  src: url("FuturisticRegular-w1Zjz.ttf");
+}
 
 
 
@@ -12,7 +15,9 @@
 
 html {
   font-size: 62.5%;
+  color:#fefadd;
   font-family: 'Poppins', sans-serif;
+  background: #0D0F2C;
 }
 
 body {
@@ -29,21 +34,9 @@ body {
   text-align: center;
 }
 
-.title h1{
-  display: inline-block;
-  font-size: 6rem;
-  font-family: 'Dancing Script', cursive;
+.title img {
+  max-height: 150px;
 }
-
-.title h1 > span {
-  display: block;
-  text-align: right;
-  font-size: 1.2rem;
-  font-weight: 200;
-  font-family: 'Poppins', sans-serif;
-}
-
-
 /* section contenu */
 .content {
   flex-grow: 1;
@@ -57,24 +50,82 @@ body {
 
 .content input {
   line-height: 25px;
-  margin: 5px 0px;
+  margin: 7.5px 0px;
   padding: 5px 15px;
+  cursor: pointer;
+}
+
+.content select{
+  margin-top: 15px;
+  background-color: transparent;
+  color:#fefadd;
+  border: solid .2rem #fefadd;
+  padding: 5px 15px;
+  border-radius: 5px;
 }
 
 .content input[type=submit] {
-  background-color: #6495ED;
-  color:white;
-  border: none;
+  background-color: transparent;
+  color:#fefadd;
+  border: solid .2rem #fefadd;
+  border-radius: 25px;
   margin-top: 25px;
 }
 
+
 .rememberme {
-  display: flex;
-  align-items: center;
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  font-size: 1.25em;
+  margin-top:.75em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding-top:.5rem;
 }
 
-.content input[type=checkbox] {
-  margin-right: 10px;
+.rememberme input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: transparent;
+  border: solid 3px #fefadd;
+  border-radius:5px;
+
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.rememberme input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.rememberme .checkmark:after {
+  left: 6px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid #fefadd;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 .content div:last-of-type {
@@ -84,24 +135,30 @@ body {
 
 .content div:last-of-type a {
   text-decoration: none;
-  color: #6495ED;
+  color: #fefadd;
   font-weight: 500;
+  font-size: larger;
+  
 }
 
+.champsform{
+  background-color: transparent;
+  color:#fefadd;
+  border: solid .2rem #fefadd;
+  border-radius: 5px;
+  font-weight: bold;
+}
 /* Le footer */
 
-.footer a {
+.footer {
   display: flex;
   justify-content: center;
   align-items: center;
   text-decoration: none;
 }
 
-.footer img {
-  max-height: 50px;
-}
-
-.footer span {
-  text-transform: uppercase;
-  color: 	#A0A0A0;
+.footer h1{
+  display: inline-block;
+  font-size: 3rem;
+  font-family: 'Futuristic';
 }

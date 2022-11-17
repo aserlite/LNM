@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instagram</title>
+    <title>La Nuit MMI</title>
     <link href="/css/normalize.css" rel="stylesheet">
     <link href="/css/public.css" rel="stylesheet">
 
@@ -14,16 +14,13 @@
 
 <body>
   <section class="title">
-    <h1>Instagram <span>par MMI Création</span></h1>
-  </section>
+      <img src="/images/logosf.png" />
+    </section>
   <section class="content">
     @yield('content')
   </section>
   <section class="footer">
-    <a href="">
-      <img src="/images/logoIUT.png" />
-      <span>IUT de Lens</span>
-    </a>
+    <h1>La Nuit MMI</h1>
   </section>
 </body>
 </html>
