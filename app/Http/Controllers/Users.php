@@ -72,10 +72,10 @@ class Users extends Controller
     !isset($_POST['Prenom']) ||
     !isset($_POST['Nom']) ||
     !isset($_POST['mail'])  ||
-    !isset($_POST['year'])  ||
+    $_POST['year']==-1  ||
     filter_var($_POST['mail'],FILTER_VALIDATE_EMAIL) === false ||
     $_POST['pwd'] != $_POST['pwd1'] ) {
-      header('location: /register');
+      return redirect('/register');
     } else {
         $u= new UsersDB();
         $u ->nom =  $_POST['Nom'];
@@ -90,7 +90,7 @@ class Users extends Controller
         session()->put('id',$id);
         return redirect('/index');
     }
-    return redirect('/register');    
+      return redirect('/register');
     }
         
     public function logout(){
