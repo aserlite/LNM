@@ -65,32 +65,31 @@ class Users extends Controller
         if(session('id')){
             return redirect('/projets');
         }
-    echo "ts";
-        if (!isset($_POST['inscription']) ||
-    !isset($_POST['pwd']) ||
-    !isset($_POST['pwd1']) ||
-    !isset($_POST['Prenom']) ||
-    !isset($_POST['Nom']) ||
-    !isset($_POST['mail'])  ||
-    $_POST['year']==-1  ||
-    filter_var($_POST['mail'],FILTER_VALIDATE_EMAIL) === false ||
-    $_POST['pwd'] != $_POST['pwd1'] ) {
-      return redirect('/register');
-    } else {
-        $u= new UsersDB();
-        $u ->nom =  $_POST['Nom'];
-        $u ->prenom =  $_POST['Prenom'];
-        $u ->mdp = sha1($_POST['pwd']);
-        $u ->email=$_POST['mail'];
-        $u ->year=$_POST['year'];
-        $u->CreationCompte = date("Y-m-d H:i:s");
-        $u ->save();
-        $id=$u->id;
-        echo $id;
-        session()->put('id',$id);
-        return redirect('/index');
-    }
-      return redirect('/register');
+        if (
+        !isset($_POST['inscription']) ||
+        !isset($_POST['pwd']) ||
+        !isset($_POST['pwd1']) ||
+        !isset($_POST['Prenom']) ||
+        !isset($_POST['Nom']) ||
+        !isset($_POST['mail'])  ||
+        $_POST['year']==-1  ||
+        filter_var($_POST['mail'],FILTER_VALIDATE_EMAIL) === false ||
+        $_POST['pwd'] != $_POST['pwd1'] ) {
+        return redirect('/register');
+        } else {
+            $u= new UsersDB();
+            $u ->nom =  $_POST['Nom'];
+            $u ->prenom =  $_POST['Prenom'];
+            $u ->mdp = sha1($_POST['pwd']);
+            $u ->email=$_POST['mail'];
+            $u ->year=$_POST['year'];
+            $u->CreationCompte = date("Y-m-d H:i:s");
+            $u ->save();
+            $id=$u->id;
+            echo $id;
+            session()->put('id',$id);
+            return redirect('/index');
+        }
     }
         
     public function logout(){
