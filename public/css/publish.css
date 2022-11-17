@@ -8,7 +8,7 @@
   display: block;
   text-align: right;
   font-size: 3rem;
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Futuristic';
 }
 
 .content > .publish form {
@@ -20,7 +20,7 @@
 
 .content > .publish input, label {
   line-height: 25px;
-  margin: 5px 0px;
+  margin: 10px 0px;
   padding: 5px 15px;
 }
 
@@ -31,16 +31,18 @@
 }
 
 label.file .bx {
-  color: #180630;
+  color: #fefadd;
   background: transparent;
   font-size: 2rem;
   margin-right: 10px;
 }
 
 .content > .publish input[type=submit], .file {
-  background-color: #fefadd;
-  color:#180630;
-  border: none;
+  background-color: transparent;
+  color:#fefadd;
+  border: solid .2rem #fefadd;
+  border-radius: 25px;
+  cursor: pointer;
 }
 .content > .publish input[type=submit] {
   margin-top: 25px;
@@ -48,4 +50,76 @@ label.file .bx {
 
 #file {
   display: none;
+}
+
+.champsform{
+  background-color: transparent;
+  color:#fefadd;
+  border: solid .2rem #fefadd;
+  border-radius: 5px;
+  font-weight: bold;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none;
+}
+
+input[type="number"] {
+  -webkit-appearance: textfield;
+     -moz-appearance: textfield;
+          appearance: textfield;
+}
+
+.anonyme {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  font-size: 1em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding: 0 0 0 35px;
+}
+
+.anonyme input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: transparent;
+  border: solid 3px #fefadd;
+  border-radius:5px;
+
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.anonyme input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.anonyme .checkmark:after {
+  left: 6px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid #fefadd;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }

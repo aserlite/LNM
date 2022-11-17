@@ -12,7 +12,11 @@ class Projets extends Controller
         return view('projets');
     }
     public function publish(){
-        return view('publish');
+        if(session('id')){
+            return view('publish');
+        }else{
+            return redirect('/login');
+        }
     }
 
     public function publishT(){
@@ -36,6 +40,9 @@ class Projets extends Controller
             $p ->img_url=$file;
             $p ->dateEcrit=date("Y-m-d H:i:s");
             $p ->anneeReal=$_POST['anneeReal'];
+            if (isset($_POST['anonyme'])){
+                $p ->anonyme=TRUE;
+            }
             if(isset($_POST['lien'])){
                 $p ->lien=$_POST['lien'];
             }
