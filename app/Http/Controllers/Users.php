@@ -5,17 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\UsersDB;
+use Symfony\Component\HttpFoundation\Cookie;
 
 class Users extends Controller
 {
     public function test(){
-        $results = UsersDB::where('login', '=', "zizi")
-            ->where('mdp', '=', sha1("123"))
-            ->get();
-        echo($results->first()->login);
-        echo($results->count());
-        dd($results);
-        return view('page2');
+        $url = url()->current();
+        return view('test',['url'=>$url]);
     }
     function login(){
         if(session('id')){
@@ -94,8 +90,44 @@ class Users extends Controller
         
     public function logout(){
     session()->flush();
-    return redirect('/login');    
+    setcookie('token', '', time() - 3600 );
+    return redirect('/');    
     }
+    
+    public function genqrcode(){
+        $id=session('id');
+        if(isset($id)){
+            $usercode=UsersDB::select('qrcodetoken')->where('id','=',$id)->get();
+            if($usercode->first()->qrcodetoken==NULL){
+                $qrcodetoken=bin2hex(random_bytes(30));
+                $u = UsersDB::where('id',$id)->update(['qrcodetoken'=>$qrcodetoken,'DateGenQrCode'=>date("Y-m-d H:i:s")]);
+            }else{
+                return redirect('/');
+            }
+        }else{
+            return redirect('/');
+        }
         
+    }
 
+    public function checkqrcode($token){
+        if(strlen($token)==60){
+            $result=UsersDB::select('nom','prenom','QrCodeUsed')->where('qrcodetoken',$token)->get();
+            if($result->count()==1 AND $result->first()->QrcodeUsed==0){
+                $updateentrée=UsersDB::where('qrcodetoken',$token)->update(['QrCodeUsed'=>TRUE]);
+                return view('resultatqrcode',['result'=>TRUE]);
+            }else{
+                return view('resultatqrcode',['result'=>FALSE]);
+            }
+        }else{
+            return redirect('/');
+        }
+    }
+
+    public function afficherqrcode(){
+        $id=session('id');
+        $token=UsersDB::select('qrcodetoken')->where('id',$id);
+        $lienimg=url('/checkqrcode').'/'.$token->first()->qrcodetoken;
+        return view('test',['url'=>$lienimg]);
+    }
     }
