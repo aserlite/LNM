@@ -1,10 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
 @font-face {
-  font-family: Futuristic;
-  src: url("FuturisticRegular-w1Zjz.ttf");
+  font-family: 'FuturisticRegular';
+  src: 
+    url("\css\FuturisticRegular-w1Zjz.ttf") format('truetype'),
 }
-
-
 
 * {
   padding: 0;
@@ -27,6 +26,10 @@ body {
   flex-direction: column;
 }
 
+.register, .login{
+  font-size:1.5em;
+  margin-top:2.5em;
+}
 
 /* section titre */
 
@@ -49,19 +52,20 @@ body {
 }
 
 .content input {
+  margin-top:1em;
   line-height: 25px;
-  margin: 7.5px 0px;
   padding: 5px 15px;
   cursor: pointer;
 }
 
 .content select{
-  margin-top: 15px;
   background-color: transparent;
   color:#fefadd;
   border: solid .2rem #fefadd;
   padding: 5px 15px;
   border-radius: 5px;
+  margin-top:1.5em;
+  margin-bottom:.5em;
 }
 
 .content input[type=submit] {
@@ -71,7 +75,6 @@ body {
   border-radius: 25px;
   margin-top: 25px;
 }
-
 
 .rememberme {
   display: block;
@@ -91,7 +94,7 @@ body {
   opacity: 0;
   cursor: pointer;
   height: 0;
-  width: 0;
+  width: 100%;
 }
 
 .checkmark {
@@ -128,9 +131,13 @@ body {
   transform: rotate(45deg);
 }
 
-.content div:last-of-type {
-  margin-top: 50px;
-  font-size: 1.2rem;
+.noms2 input{
+  width: 48%;
+}
+
+.noms2 {
+  display: flex;
+  justify-content: space-between;
 }
 
 .content div:last-of-type a {
@@ -160,5 +167,4 @@ body {
 .footer h1{
   display: inline-block;
   font-size: 3rem;
-  font-family: 'Futuristic';
 }

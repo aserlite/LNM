@@ -54,3 +54,14 @@ article.post .bx {
   text-align: center;
   margin-bottom:2.5em;
 }
+
+.headCreateur a{
+  display: block;
+  font-size:2em;
+  margin-top:.25em;
+  text-decoration: none;
+}
+
+.lienscontact{
+  margin-top:1em;
+}

@@ -79,6 +79,12 @@ class Users extends Controller
             $u ->mdp = sha1($_POST['pwd']);
             $u ->email=$_POST['mail'];
             $u ->year=$_POST['year'];
+            if(isset($_POST['linkedin'])){
+                $u ->linkedin=$_POST['linkedin'];
+            }
+            if(isset($_POST['portfolio'])){
+                $u ->portfolio=$_POST['portfolio'];
+            }
             $u->CreationCompte = date("Y-m-d H:i:s");
             $u ->save();
             $id=$u->id;
@@ -111,23 +117,37 @@ class Users extends Controller
     }
 
     public function checkqrcode($token){
-        if(strlen($token)==60){
-            $result=UsersDB::select('nom','prenom','QrCodeUsed')->where('qrcodetoken',$token)->get();
-            if($result->count()==1 AND $result->first()->QrcodeUsed==0){
-                $updateentrée=UsersDB::where('qrcodetoken',$token)->update(['QrCodeUsed'=>TRUE]);
-                return view('resultatqrcode',['result'=>TRUE]);
+        if(session('id')==5){
+            if(strlen($token)==60){
+                $result=UsersDB::select('nom','prenom','QrCodeUsed')->where('qrcodetoken',$token)->get();
+                if($result->count()==1 ){
+                    if($result->first()->QrCodeUsed === 0){
+                        $updateentrée=UsersDB::where('qrcodetoken',$token)->update(['QrCodeUsed'=>TRUE]);
+                        return view('qrcodebon',['prenom'=>$result->first()->prenom,'nom'=>$result->first()->nom]);
+                    }else{
+                        return view('qrcodefaux',['result'=>'Qr Code deja utilisé']);
+                    }
+                }else{
+                    return view('qrcodefaux',['result'=>"Cet utilisateur n'apparait pas dans notre base de donnée ou n'as pas crée d'invitation"]);
+                }
             }else{
-                return view('resultatqrcode',['result'=>FALSE]);
+                return view('qrcodefaux',['result'=>'erreur interne dans le qr code, contactez un organisateur']);
             }
         }else{
             return redirect('/');
         }
+        
     }
 
     public function afficherqrcode(){
         $id=session('id');
-        $token=UsersDB::select('qrcodetoken')->where('id',$id);
-        $lienimg=url('/checkqrcode').'/'.$token->first()->qrcodetoken;
-        return view('test',['url'=>$lienimg]);
+        $result=UsersDB::select('qrcodetoken','prenom')->where('id',$id)->get();
+        if($result->count()==1){
+            $token=$result->first()->qrcodetoken;
+            $lienimg=url('/checkqrcode').'/'.$token;
+            return view('invitation',['url'=>$lienimg,"prenom"=>$result->first()->prenom]);
+        }else{
+            return redirect('/genqrcode');
+        }
     }
     }
