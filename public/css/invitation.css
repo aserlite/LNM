@@ -39,3 +39,17 @@
     font-size:2.5em;
     color:#fefadd;
 }
+
+.bvnhead svg{
+    display: block;
+    margin:1em auto auto auto;
+}
+
+.dlinvit{
+    font-size:1.5em;
+    text-decoration: none;
+    border-radius:25px;
+    border:solid 2px #fefadd;
+    padding:.5em 2.5em .5em 2.5em;
+
+}
