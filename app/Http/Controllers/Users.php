@@ -6,12 +6,31 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\UsersDB;
 use Symfony\Component\HttpFoundation\Cookie;
+use PDF;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class Users extends Controller
 {
     public function test(){
-        $url = url()->current();
-        return view('test',['url'=>$url]);
+        $id=session('id');
+        $result=UsersDB::select('qrcodetoken','prenom')->where('id',$id)->get();
+        if($result->count()==1){
+            $token=$result->first()->qrcodetoken;
+            $lienimg=url('/checkqrcode').'/'.$token;
+            $qrcode = QrCode::size(200)
+                            ->color(8,114,145)
+                            ->backgroundcolor(245,234,62)
+                            ->generate($lienimg);
+
+            $qrcode = base64_encode($qrcode);
+            // return view('test',['qrcode'=>$qrcode]);
+            $pdf = PDF::loadView('test',['qrcode'=>$qrcode])->setOptions(['defaultFont' => 'sans-serif']);
+            return $pdf->stream();
+        }else{
+            return redirect('/genqrcode');
+        }
+        
+        
     }
     function login(){
         if(session('id')){
@@ -145,7 +164,11 @@ class Users extends Controller
         if($result->count()==1){
             $token=$result->first()->qrcodetoken;
             $lienimg=url('/checkqrcode').'/'.$token;
-            return view('invitation',['url'=>$lienimg,"prenom"=>$result->first()->prenom]);
+            $qrcode = QrCode::size(200)
+                            ->color(254,250,221)
+                            ->backgroundcolor(13,15,44)
+                            ->generate($lienimg);
+            return view('invitation',['url'=>$lienimg,'qrcode'=>$qrcode,"prenom"=>$result->first()->prenom]);
         }else{
             return redirect('/genqrcode');
         }
