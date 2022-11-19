@@ -4,7 +4,9 @@
   src: 
     url("\css\FuturisticRegular-w1Zjz.ttf") format('truetype'),
 }
-
+::selection{
+  color:red;
+}
 * {
   padding: 0;
   margin: 0;

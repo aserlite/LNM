@@ -25,3 +25,17 @@
     margin-top:15%;
     font-size: 2.5em;
 }
+
+.baduser{
+    display: block;
+    font-size:2em;
+    margin-top:10%;
+}
+
+.baduserL{
+    text-decoration:none;
+    margin-top:.5em;
+    display:block;
+    font-size:2.5em;
+    color:#fefadd;
+}

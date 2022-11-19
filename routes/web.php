@@ -44,3 +44,5 @@ Route::get('createur/{i}',[Projets::class,'afficherCreations']);
 Route::get('checkqrcode/{token}',[Users::class,'checkqrcode']);
 Route::get('genqrcode',[Users::class,"genqrcode"]);
 Route::get('afficherqrcode',[Users::class,"afficherqrcode"]);
+
+Route::get('mauvaisuser',[MainController::class,'mauvaisuser']);

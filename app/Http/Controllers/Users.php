@@ -134,7 +134,7 @@ class Users extends Controller
                 return view('qrcodefaux',['result'=>'erreur interne dans le qr code, contactez un organisateur']);
             }
         }else{
-            return redirect('/');
+            return redirect('/mauvaisuser');
         }
         
     }

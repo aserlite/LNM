@@ -25,4 +25,9 @@ class MainController extends Controller
         }
         
     }
+
+    public function mauvaisuser(){
+        $url=url('/');
+        return view('mauvaisuser',['url'=>$url]);
+    }
 }

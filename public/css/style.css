@@ -5,6 +5,21 @@
   --main-send-color: #6495ED;
 }
 
+::selection{
+  background-color:var(--main-txt-color);
+  color:#0D0F2C;
+}
+
+::-moz-selection{
+  background-color:var(--main-txt-color);
+  color:#0D0F2C;
+}
+
+img::selection{
+  color:transparent;
+  background-color: transparent;
+}
+
 * {
   padding: 0;
   margin: 0;
