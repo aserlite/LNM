@@ -65,3 +65,11 @@ article.post .bx {
 .lienscontact{
   margin-top:1em;
 }
+
+.modifyacc{
+    font-size:1.5em;
+    text-decoration: none;
+    border-radius:25px;
+    border:solid 2px #fefadd;
+    padding:.5em 2.5em .5em 2.5em;
+}

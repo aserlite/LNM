@@ -18,16 +18,15 @@ class Users extends Controller
             $token=$result->first()->qrcodetoken;
             $lienimg=url('/checkqrcode').'/'.$token;
             $qrcode = QrCode::size(200)
-                            ->color(8,114,145)
-                            ->backgroundcolor(245,234,62)
+                            ->color(254,250,221)
+                            ->backgroundcolor(13,15,44)
                             ->generate($lienimg);
 
             $qrcode = base64_encode($qrcode);
-            // return view('test',['qrcode'=>$qrcode]);
             $pdf = PDF::loadView('test',['qrcode'=>$qrcode])->setOptions(['defaultFont' => 'sans-serif']);
             return $pdf->stream();
         }else{
-            return redirect('/genqrcode');
+            return redirect('/');
         }
         
         
@@ -173,4 +172,39 @@ class Users extends Controller
             return redirect('/genqrcode');
         }
     }
+
+    public function pdfqrcode(){
+        $id=session('id');
+        $result=UsersDB::select('qrcodetoken','prenom','nom')->where('id',$id)->get();
+        if($result->count()==1){
+            $token=$result->first()->qrcodetoken;
+            $lienimg=url('/checkqrcode').'/'.$token;
+            $qrcode = QrCode::size(500)
+                            ->color(254,250,221)
+                            ->backgroundcolor(13,15,44)
+                            ->generate($lienimg);
+            $qrcode = base64_encode($qrcode);
+            $pdf = PDF::loadView('billet',['qrcode'=>$qrcode,"prenom"=>$result->first()->prenom,"nom"=>$result->first()->nom])->setOptions(['defaultFont' => 'poppins', 'isRemoteEnabled' => true])->setPaper('a4');
+            
+            return $pdf->download("billet".\Str::slug($result->first()->prenom).\Str::slug($result->first()->nom).".pdf");
+        }else{
+            return redirect('/');
+        }
     }
+
+    public function modifyacc(){
+        if(session('id')){
+            $id = session('id');
+            return view('modifyacc',['id'=>$id]);
+        }
+
+        
+    }
+    
+    public function modifyaccT(){
+        if(session('id')){
+            $id = session('id');
+            return redirect('/createur/'.$id);
+        }
+    }
+}

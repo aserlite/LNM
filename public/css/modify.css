@@ -1,0 +1,41 @@
+.lienretour{
+    text-decoration: none;
+    font-size: 2em;
+    padding:.5em 1em;
+    border: solid 2px #fefadd;
+    border-radius: 25px;
+    
+}
+
+nav.top{
+    display: none;
+}
+
+.modifyacc input{
+    background-color: transparent;
+    color:#fefadd;
+    border: solid .2rem #fefadd;
+    border-radius: 5px;
+    font-weight: bold;
+    width: 100%;
+    min-height: 4em;
+    margin-top:2.5em;
+    padding-left:1em;
+    font-size:1.2em;
+}
+
+
+.modifyacc form{
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:5rem;
+}
+
+.content input[type=submit] {
+    border-radius: 25px;
+    margin-top: 4.5rem !important;
+    font-size: 1.5em;
+  }

@@ -64,16 +64,21 @@ class Projets extends Controller
         }
     }    
     public function afficherCreations($i){
-        $projets=ProjetsDB::where('idAuteur', '=', $i)
-                            ->orderby('dateEcrit', 'asc')
-                            ->get();
-        $auteur=UsersDB::where('id', '=', $i)->get();
-        $auteur=$auteur->first();
-        if(isset($auteur)){
-            return view('createur',['projets'=>$projets,'auteur'=> $auteur]);
+        if(session('id')==$i){
+            $myacc=TRUE;
         }else{
-            return redirect('/projets');
+            $myacc=FALSE;
         }
-
+            $projets=ProjetsDB::where('idAuteur', '=', $i)
+                                ->orderby('dateEcrit', 'asc')
+                                ->get();
+            $auteur=UsersDB::where('id', '=', $i)->get();
+            $auteur=$auteur->first();
+            if(isset($auteur)){
+                return view('createur',['projets'=>$projets,'auteur'=> $auteur,'myacc'=>$myacc]);
+            }else{
+                return redirect('/projets');
+            }
     }
+    
 }

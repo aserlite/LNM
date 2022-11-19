@@ -12,6 +12,7 @@
       @if(isset($auteur->linkedin)) <a href='{{$auteur->linkedin}}'>Linkedin</a>@endif
       @if(isset($auteur->portfolio))<a href='{{$auteur->portfolio}}'>Portfolio</a> @endif
     </div>
+    @if($myacc==true)<a href='/modifyacc' class="modifyacc">Modifier mon profil </a>@endif
 </div>
 
 @forelse($projets as $a)

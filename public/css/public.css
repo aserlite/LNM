@@ -1,11 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
 @font-face {
   font-family: 'FuturisticRegular';
   src: 
     url("\css\FuturisticRegular-w1Zjz.ttf") format('truetype'),
 }
+
 ::selection{
-  color:red;
+  background-color:#fefadd;
+  color:#0D0F2C;
+}
+
+::-moz-selection{
+  background-color:#fefadd;
+  color:#0D0F2C;
 }
 * {
   padding: 0;
@@ -17,7 +27,7 @@
 html {
   font-size: 62.5%;
   color:#fefadd;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Comfortaa', cursive;
   background: #0D0F2C;
 }
 
