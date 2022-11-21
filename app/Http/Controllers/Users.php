@@ -131,8 +131,9 @@ class Users extends Controller
             if($usercode->first()->qrcodetoken==NULL){
                 $qrcodetoken=bin2hex(random_bytes(30));
                 $u = UsersDB::where('id',$id)->update(['qrcodetoken'=>$qrcodetoken,'DateGenQrCode'=>date("Y-m-d H:i:s")]);
+                return redirect('/afficherqrcode');
             }else{
-                return redirect('/');
+                return redirect('/afficherqrcode');
             }
         }else{
             return redirect('/');
@@ -141,7 +142,8 @@ class Users extends Controller
     }
 
     public function checkqrcode($token){
-        if(session('id')==5){
+        $admins=[1,5];
+        if(in_array(session('id'),$admins)){
             if(strlen($token)==60){
                 $result=UsersDB::select('nom','prenom','QrCodeUsed')->where('qrcodetoken',$token)->get();
                 if($result->count()==1 ){
