@@ -9,8 +9,8 @@
     <h1>{{$auteur->prenom}} {{$auteur->nom}}</h1>
     <h2>Promotion : {{$auteur->Year}}</h2>
     <div class="lienscontact">
-      @if(isset($auteur->linkedin)) <a href='{{$auteur->linkedin}}'>Linkedin</a>@endif
-      @if(isset($auteur->portfolio))<a href='{{$auteur->portfolio}}'>Portfolio</a> @endif
+      @if(isset($auteur->linkedin)AND $auteur->linkedin!='') <a href='{{$auteur->linkedin}}'>Linkedin</a>@endif
+      @if(isset($auteur->portfolio) AND $auteur->portfolio!='')<a href='{{$auteur->portfolio}}'>Portfolio</a> @endif
     </div>
     @if($myacc==true)<a href='/modifyacc' class="modifyacc">Modifier mon profil </a>@endif
 </div>

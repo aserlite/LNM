@@ -97,11 +97,17 @@ class Users extends Controller
             $u ->mdp = sha1($_POST['pwd']);
             $u ->email=$_POST['mail'];
             $u ->year=$_POST['year'];
-            if(isset($_POST['linkedin'])){
+            if(isset($_POST['linkedin']) AND $_POST['linkedin']!=""){
+                $u ->linkedin=$_POST['linkedin'];
+            }else{
+                $_POST['linkedin']=NULL;
                 $u ->linkedin=$_POST['linkedin'];
             }
-            if(isset($_POST['portfolio'])){
+            if(isset($_POST['portfolio']) AND $_POST['linkedin']!=""){
                 $u ->portfolio=$_POST['portfolio'];
+            }else{
+                $_POST['portfolio']=NULL;
+                $u->portfolio=NULL;
             }
             $u->CreationCompte = date("Y-m-d H:i:s");
             $u ->save();
@@ -196,14 +202,19 @@ class Users extends Controller
         if(session('id')){
             $id = session('id');
             return view('modifyacc',['id'=>$id]);
-        }
-
-        
+        }        
     }
     
     public function modifyaccT(){
         if(session('id')){
             $id = session('id');
+            $user = UsersDB::where('id', '=', $id)->get();
+            if(isset($_POST['linkedin'])){
+                UsersDB::where('id',$user->first()->id)->update(['linkedin'=>$_POST['linkedin']]);
+            }
+            if(isset($_POST['portfolio'])){
+                UsersDB::where('id',$user->first()->id)->update(['portfolio'=>$_POST['portfolio']]);
+            }
             return redirect('/createur/'.$id);
         }
     }

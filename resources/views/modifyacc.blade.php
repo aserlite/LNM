@@ -9,8 +9,8 @@
     <a href="/createur/{{$id}}" class="lienretour">Retour</a>
     <form action='/modifyaccT' method='POST'>
         @csrf
-        <input type="text" name='linkedin' placeholder="Lien vers votre compte linkedin">
-        <input type="text" name='portfolio' placeholder="Lien vers votre portfolio">
+        <input type="link" name='linkedin' placeholder="Lien vers votre compte linkedin">
+        <input type="link" name='portfolio' placeholder="Lien vers votre portfolio">
         <input type="submit" value="Envoyer">
     </form>
 </div>
