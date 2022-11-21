@@ -181,6 +181,24 @@ class Users extends Controller
         }
     }
 
+    public function afficherpdfqrcode(){
+        $id=session('id');
+        $result=UsersDB::select('qrcodetoken','prenom','nom')->where('id',$id)->get();
+        if($result->count()==1){
+            $token=$result->first()->qrcodetoken;
+            $lienimg=url('/checkqrcode').'/'.$token;
+            $qrcode = QrCode::size(500)
+                            ->color(254,250,221)
+                            ->backgroundcolor(13,15,44)
+                            ->generate($lienimg);
+            $qrcode = base64_encode($qrcode);
+            $pdf = PDF::loadView('billet',['qrcode'=>$qrcode,"prenom"=>$result->first()->prenom,"nom"=>$result->first()->nom])->setOptions(['defaultFont' => 'poppins', 'isRemoteEnabled' => true])->setPaper('a4');
+            
+            return $pdf->stream("billet".\Str::slug($result->first()->prenom).\Str::slug($result->first()->nom).".pdf");
+        }else{
+            return redirect('/');
+        }
+    }
     public function pdfqrcode(){
         $id=session('id');
         $result=UsersDB::select('qrcodetoken','prenom','nom')->where('id',$id)->get();

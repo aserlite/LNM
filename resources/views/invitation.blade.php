@@ -11,5 +11,6 @@
 </div>
 
 <a href='{{$url}}'>test</a>
-<a href='/billet' class="dlinvit">Télecharger mon billet</a>
+<a href='/billet' class="dlinvit">Voir mon billet</a>
+<a href='/dlbillet' class="dlinvit">Télecharger mon billet</a>
 @endsection
