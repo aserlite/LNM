@@ -92,25 +92,25 @@ class Users extends Controller
         return redirect('/register');
         } else {
             $u= new UsersDB();
-            $u ->nom =  $_POST['Nom'];
-            $u ->prenom =  $_POST['Prenom'];
-            $u ->mdp = sha1($_POST['pwd']);
-            $u ->email=$_POST['mail'];
-            $u ->year=$_POST['year'];
+            $u->nom =  $_POST['Nom'];
+            $u->prenom =  $_POST['Prenom'];
+            $u->mdp = sha1($_POST['pwd']);
+            $u->email=$_POST['mail'];
+            $u->year=$_POST['year'];
             if(isset($_POST['linkedin']) AND $_POST['linkedin']!=""){
-                $u ->linkedin=$_POST['linkedin'];
+                $u->linkedin=$_POST['linkedin'];
             }else{
                 $_POST['linkedin']=NULL;
-                $u ->linkedin=$_POST['linkedin'];
+                $u->linkedin=$_POST['linkedin'];
             }
             if(isset($_POST['portfolio']) AND $_POST['linkedin']!=""){
-                $u ->portfolio=$_POST['portfolio'];
+                $u->portfolio=$_POST['portfolio'];
             }else{
                 $_POST['portfolio']=NULL;
                 $u->portfolio=NULL;
             }
             $u->CreationCompte = date("Y-m-d H:i:s");
-            $u ->save();
+            $u->save();
             $id=$u->id;
             echo $id;
             session()->put('id',$id);
@@ -142,7 +142,7 @@ class Users extends Controller
     }
 
     public function checkqrcode($token){
-        $admins=[1,5];
+        $admins=[1,5,12];
         if(in_array(session('id'),$admins)){
             if(strlen($token)==60){
                 $result=UsersDB::select('nom','prenom','QrCodeUsed')->where('qrcodetoken',$token)->get();

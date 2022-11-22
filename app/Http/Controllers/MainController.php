@@ -16,12 +16,12 @@ class MainController extends Controller
                 session()->put('id',$user->first()->id);
                 return view('index');
             }else{
-                return view('login');
+                return redirect('login');
             }
         }elseif(session('id')){
             return view('index');
         }else{
-            return view('login');
+            return redirect('login');
         }
         
     }

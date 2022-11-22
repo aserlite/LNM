@@ -3,6 +3,11 @@ article.post {
   margin-bottom: 20px;
 }
 
+.allProjects{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+}
+
 article.post .auteur {
   display: inline-block;
   font-size: 1.4rem;
@@ -10,7 +15,8 @@ article.post .auteur {
 }
 
 article.post img {
-  width: 100%;
+  max-width: 100%;
+  max-height: 25rem;
 }
 
 article.post h3 {

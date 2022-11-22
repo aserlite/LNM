@@ -81,7 +81,7 @@ body {
 }
 
 .content input[type=submit] {
-  background-color: transparent;
+  background: linear-gradient(45deg,#0e123b,#0D0F2C);
   color:#fefadd;
   border: solid .2rem #fefadd;
   border-radius: 25px;
@@ -179,4 +179,11 @@ body {
 .footer h1{
   display: inline-block;
   font-size: 3rem;
+}
+
+
+@media screen and (min-width:1100px) {
+  body {
+    padding: 0 30% ;
+  }
 }

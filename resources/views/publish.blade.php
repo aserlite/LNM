@@ -2,6 +2,13 @@
 
 @section('css')
   <link href="/css/publish.css" rel="stylesheet">
+  <style>
+    @media screen and (min-width:1100px) {
+      body {
+        padding: 0 30% ;
+      }
+    }
+  </style>
 @endsection
 
 @section('content')
