@@ -15,15 +15,8 @@ class MainController extends Controller
             if ($user->count()!=0){
                 session()->put('id',$user->first()->id);
                 return view('index');
-            }else{
-                return redirect('login');
-            }
-        }elseif(session('id')){
-            return view('index');
-        }else{
-            return redirect('login');
-        }
-        
+            }}
+        return view('index');
     }
 
     public function mauvaisuser(){
