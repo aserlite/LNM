@@ -1,4 +1,4 @@
-@extends('layouts.topj')
+@if(isset($id) == TRUE) @extends('layouts.topj') @endif
 
 @section('css')
 <link rel="stylesheet" href="/css/index.css">
@@ -52,4 +52,15 @@
       
     </section>
   </div>
+  
+  <div>
+    <a href=""><h2>Portfolio ></h2></a>
+  </div>
+
+
+  <div>
+    <a href=""><h2>FAQ ></h2></a>
+  </div>
+
+</div>
 @endsection

@@ -14,9 +14,6 @@
       <li class="nav-item">
         <a href="/register" class="nav-link">Register</a>
       </li>
-      <li class="nav-item">
-        <a href="#" class="nav-link">caca</a>
-      </li>
     </ul>
 
     <div class="hamburger">
