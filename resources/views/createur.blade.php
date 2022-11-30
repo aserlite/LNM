@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.topjc')
 
 @section('css')
   <link href="/css/projets.css" rel="stylesheet">
@@ -12,7 +12,11 @@
       @if(isset($auteur->linkedin)AND $auteur->linkedin!='') <a href='{{$auteur->linkedin}}'>Linkedin</a>@endif
       @if(isset($auteur->portfolio) AND $auteur->portfolio!='')<a href='{{$auteur->portfolio}}'>Portfolio</a> @endif
     </div>
-    @if($myacc==true)<a href='/modifyacc' class="modifyacc">Modifier mon profil </a>@endif
+    @if($myacc==true)
+    <a href='/afficherqrcode' class="modifyacc">Mon invitation</a>
+    <a href='/modifyacc' class="modifyacc">Modifier mon profil </a>
+    <a href="/logout">Se deconnecter</a>
+    @endif
 </div>
 
 @forelse($projets as $a)

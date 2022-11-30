@@ -1,5 +1,6 @@
 @extends('layouts.appV1')
 
+
 @section('content')
 <div class="register">
   <form action='/registerT' method='POST'>

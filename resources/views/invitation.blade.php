@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.topjc')
 
 @section('css')
   <link href="/css/invitation.css" rel="stylesheet">
