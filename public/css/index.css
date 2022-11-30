@@ -1,424 +1,382 @@
-
 /* GENERAL */
 html{
-    scroll-behavior: smooth;
-    overflow-x: hidden;
+  scroll-behavior: smooth;
+  overflow-y: hidden;
+}
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
 
-  }
-  * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  }
-  
-  body {
-    font-family: 'Maven Pro', sans-serif;
-    font-size: 62.5%;
-    /* background-color: #0d0f2c; */
-    background: rgb(2,0,36);
-  background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(13,15,44,1) 72%, rgba(60,27,126,1) 100%);
-  }
-  
-
-  .products-menu{
-    justify-content: flex-start;
-  }
-  #burger{
-    margin-top: 6vw;
-  }
-  h1{
-    font-family: 'Dosis';
-    font-weight: 300;
-    font-size: 4vw;
-    text-align: center;
-    color: #fefadd;
-    margin: 0;
-    }
-  
-  h2{
-      font-family: 'Comfortaa';
-      font-size: 12vw;
-      text-align: center;
-      color: #fefadd;
-  }
-  .intro{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    margin-top: 8%;
-  }
-  .intro>p{
-    font-family: 'Comfortaa';
-    font-size: 3vw;
-    text-align: center;
-    color: #fefadd;
-    align-self: center;
-    width: 60%;
-    }
-  .intro>img{
-      top: -4rem;
-      width: 80%;
-      position: absolute;
-      align-items: center;
-      justify-content: center;
-      align-self: center;
-      z-index: -1;
-      animation-name: animlune;
-      animation-duration: 10s;
-      animation-iteration-count: infinite;
-      animation-timing-function: linear;
-  }
-  @keyframes animlune{
-    0%   {transform: rotate(0deg);}
-    100% {transform: rotate(360deg);}
-  }
-  
-  .buttons{
-    display: flex;
-    flex-direction: column;
-    font-family: 'Comfortaa';
-    font-size: 4vw;
-    text-align: center;
-    color: #fefadd;
-    margin-top: 8%;
-  }
-  #button1{
-    color: #0d0f2b;
-    border: 1px solid #fefadd;
-    background-color: #fefadd;
-    font-family: 'Comfortaa';
-    text-align: center;
-    align-self: center;
-    min-height: 10%;
-    border-radius: 1vw;
-    text-transform: uppercase;
-    padding: 2%;
-  }
-  #button2{
-    border: 1px solid white;
-    font-family: 'Comfortaa';
-    text-align: center;
-    color: white;
-    align-self: center;
-    min-height: 10%;
-    border-radius: 1vw;
-    margin: 1rem;
-    text-transform: uppercase;
-    padding: 2%;
-  }
-  #arrow{
-    color: #381c79;
-    position: relative;
-    left: 46%;
-    margin-top: 20%;
-    font-size: 5vw;
-  }
-  
-  .tendance p {
+body {
   font-family: 'Maven Pro', sans-serif;
-  font-size: 1.5vw;
-  color: #fefadd;
-  padding: 5rem;
-  }
-  
-  .bx{
-    color: #fefadd;
-    font-size: 7vw;
-  }
-  
-  .rassembler{
-    margin-top: 40%;
-  }
-  .rassembler>p{
-    font-family: 'Comfortaa';
-    font-size: 5vw;
-    text-align: left;
-    color: #fefadd; 
-    padding: 8%;
-  }
-  
-  video{
-    position: absolute;
-    top: 65%;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-  }
-  .overlay{
-    position: absolute;
-    background-color: black;
-    top: 80%; left: 0;
-    width: 100%; height: 100%;
-    opacity: 0.7;
-    z-index: -1;
-  }
-  
-  
-  .banner-video {
-    position: absolute;
-    z-index: -1;
-  }
-  
-  .banner-video-overlay {
-    position: absolute;
-    background-color: black;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    opacity: 0.5;
-    z-index: -1;
-  }
-  
-  #scrolltop{
-    position: fixed;
-    bottom: 5rem;
-    right: 2rem;
-    width: 10%;
-    height: 10%;
-  }
-  
-  /* HEADER*/
-  .header {
-  background-color: black;
-  background-size: 100%;
-    min-height: 50rem;
-  }
-  
-  a {
-  text-decoration: none;
-  color: #fefadd;
+  font-size: 62.5%;
+  /* background-color: #0d0f2c; */
+  background: rgb(2,0,36);
+background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(13,15,44,1) 72%, rgba(60,27,126,1) 100%);
+}
+h2{
   font-family: 'Comfortaa';
-  }
-  .products-menu a:hover {
-  color: cyan;
-  font-family: 'Maven Pro';
-  }
-  
-  
-  .banner a>img {
-  color: white;
-  text-decoration: none;
-  }
-  a:hover {
-  color: white;
-  text-decoration: none;
-  }
-  
-  .banner {
-  display: grid;
-  color: white;
-  padding: 1rem;
-  place-items: center;
-  padding-top: 10rem;
-  }
-  .banner h2 {
-  font-size: 13vw;
-  text-transform: uppercase;
-  font-family: 'Bebas Neue', cursive;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-  line-height: 16rem;
-  }
-  
-  
-  
-  
-  /* animation du nom */
-  .char {
-  transform: translateY(-215px);
-  transition: transform 1s, color .5s;
-  }
-  .char:hover {
-  color: cyan;   
-  }
-  .banner span {
-  font-size: 1.5vw;
-  font-family: 'Maven Pro';
-  }
-  .banner-intro a{
-  display: block;
-  padding-top: 1rem;
-  }
-  
-  /* animation face */
-  .blanc {
-  min-width: 100%;
-  min-height: 11vw;
-  background-color: white;
-  margin-top: 15%;
-  z-index: 1;
-  position: relative;
-  }
-  #myface{
-  width:20%;
-  display: block;
-  margin: auto;
-  position: absolute;
-  right: 18vw;
-  top: 45%;
-  animation-name: faceanim;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
-  z-index: 0;
-  
-  }
-  @keyframes faceanim{
-  0%   {right: 18vw;}
-  25%  {right: 18.5vw;
-        transform: rotate(-2deg);}
-  50%  {right: 18.5vw;}
-  75%  {right: 19vw;
-    transform: rotate(-1deg);}
-  100% {right: 18vw;}
-  }
-  
-  #laptop{
-  max-width:20%;
-  display: block;
-  margin: auto;
-  position: absolute;
-  right: 30vw;
-  top: 69%;
-  animation-name: lapanim;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
-  z-index: 2;
-  }
-  @keyframes lapanim{
-  0%   {right: 30vw;}
-  25%  {right: 31vw;
-        transform: rotate(4deg);}
-  50%  {right: 31vw;}
-  75%  {right: 29,9vw;
-    transform: rotate(-1deg);}
-  100% {right: 30vw;}
-  }
-  
-  
-  /* LES TENDANCES (4pt)*/
-  #apropos{
+  font-size: 12vw;
+  text-align: center;
+  color: #fefadd;
+}
+.intro{
+position: relative;
+display: flex;
+flex-direction: column;
+overflow: hidden;
+min-height: 80vw;
+padding-top: 10%;
+}
+.intro>p{
+font-family: 'Comfortaa';
+font-size: 3vw;
+text-align: center;
+color: #fefadd;
+align-self: center;
+width: 60%;
+}
+.intro>img{
+top: 0rem;
+width: 80%;
+position: absolute;
+align-items: center;
+justify-content: center;
+align-self: center;
+z-index: -1;
+animation-name: animlune;
+animation-duration: 10s;
+animation-iteration-count: infinite;
+animation-timing-function: linear;
+}
+@keyframes animlune{
+0%   {transform: rotate(0deg);}
+100% {transform: rotate(360deg);}
+}
+
+.buttons{
+display: flex;
+flex-direction: column;
+font-family: 'Comfortaa';
+font-size: 4vw;
+text-align: center;
+color: #fefadd;
+margin-top: 8%;
+}
+#buttonresa{
+color: #0d0f2b;
+border: 1px solid #fefadd;
+background-color: #fefadd;
+font-family: 'Comfortaa';
+text-align: center;
+align-self: center;
+min-height: 10%;
+border-radius: 1vw;
+margin: 1rem;
+text-transform: uppercase;
+padding: 2%;
+}
+#button1{
+color: #0d0f2b;
+border: 1px solid #fefadd;
+background-color: #fefadd;
+font-family: 'Comfortaa';
+text-align: center;
+align-self: center;
+min-height: 10%;
+border-radius: 1vw;
+margin: 1rem;
+text-transform: uppercase;
+padding: 2%;
+}
+#button2{
+border: 1px solid white;
+font-family: 'Comfortaa';
+text-align: center;
+color: white;
+min-height: 10%;
+border-radius: 1vw;
+margin: 1rem;
+text-transform: uppercase;
+padding: 2%;
+}
+#arrow{
+color: #381c79;
+position: relative;
+left: 46%;
+margin-top: 10%;
+font-size: 5vw;
+}
+
+.tendance p {
+font-family: 'Maven Pro', sans-serif;
+font-size: 1.5vw;
+color: #fefadd;
+padding: 5rem;
+}
+
+.bx{
+color: #fefadd;
+font-size: 7vw;
+}
+
+.rassembler{
+margin-top: 40%;
+}
+.rassembler>p{
+font-family: 'Comfortaa';
+font-size: 5vw;
+text-align: left;
+color: #fefadd; 
+padding: 8%;
+}
+
+video{
+position: absolute;
+top: 65%;
+width: 100%;
+height: 100%;
+z-index: -1;
+}
+.overlay{
+position: absolute;
+background-color: black;
+top: 80%; left: 0;
+width: 100%; height: 100%;
+opacity: 0.7;
+z-index: -1;
+}
+
+
+.banner-video {
+position: absolute;
+z-index: -1;
+}
+
+.banner-video-overlay {
+position: absolute;
+background-color: black;
+top: 0; left: 0;
+width: 100%; height: 100%;
+opacity: 0.5;
+z-index: -1;
+}
+
+#scrolltop{
+position: fixed;
+bottom: 5rem;
+right: 2rem;
+width: 10%;
+height: 10%;
+}
+
+/* HEADER*/
+.header {
+background-color: black;
+background-size: 100%;
+min-height: 50rem;
+}
+
+a {
+text-decoration: none;
+color: #fefadd;
+font-family: 'Comfortaa';
+}
+.products-menu a:hover {
+color: cyan;
+font-family: 'Maven Pro';
+}
+
+
+.banner a>img {
+color: white;
+text-decoration: none;
+}
+a:hover {
+color: white;
+text-decoration: none;
+}
+
+.banner {
+display: grid;
+color: white;
+padding: 1rem;
+place-items: center;
+padding-top: 10rem;
+}
+.banner h2 {
+font-size: 13vw;
+text-transform: uppercase;
+font-family: 'Bebas Neue', cursive;
+clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+line-height: 16rem;
+}
+
+
+/* liens réseaux sociaux  */
+#reseaux{
+margin-top: 20%;
+display: flex;
+justify-content: space-between;
+}
+
+#reseaux>a:first-child{
+margin-left: 10%;
+}
+#Facebook>img{
+width: 40%;
+}
+
+
+/* Toggle Concept */
+.concept{
+position: fixed;
+  right: -100%;
+  top: 70px;
+  gap: 0;
+  flex-direction: column;
+  width: 95%;
+  text-align: center;
+  transition: 0.3s;
+  border-radius: 1%;
+  background-color: #381c79;
+}
+.concept>p {
+font-family: 'Comfortaa';
+font-size: 5vw;
+text-align: left;
+color: #fefadd;
+padding: 8%;
+}
+.concept.active{
+position: fixed;
+right: 5%;
+top: 10%;
+gap: 0;
+flex-direction: column;
+width: 90%;
+text-align: center;
+transition: 0.3s;
+border-radius: 3%;
+background: rgba(2,0,36,1);
+border: 1px solid #fefadd;
+}
+
+/* Toggle Programme */
+.programme{
+position: fixed;
+  right: -100%;
+  top: 70px;
+  gap: 0;
+  flex-direction: column;
+  width: 95%;
+  text-align: center;
+  transition: 0.3s;
+  border-radius: 1%;
+  background-color: #381c79;
+}
+.programme>p {
+font-family: 'Comfortaa';
+font-size: 5vw;
+text-align: left;
+color: #fefadd;
+padding: 8%;
+}
+.programme.active{
+position: fixed;
+right: 5%;
+top: 10%;
+gap: 0;
+flex-direction: column;
+width: 90%;
+text-align: center;
+transition: 0.3s;
+border-radius: 3%;
+background: rgba(2,0,36,1);
+border: 1px solid #fefadd;
+}
+
+
+
+#elements{
+height: 95vw;
+}
+#elements>div{
+margin-top: 8%;
+}
+
+
+
+
+/* Responsive desktop, media query desktop  */
+@media(min-width:768px){
+/* je suis content */
+.content{
+  display: flex;
+  justify-content: center;
+  gap: 10vw;
+}
+/* intro */
+.intro{
+  width: 50%;
+  min-height: 48vw;
+  padding-top: 4%;
+}
+.intro>img{
+  width: 80%;
+  top: 0vw;
+}
+.logo>a>img {
+  width: 8%;
+}
+h1{
+  font-size: 3vw;
+}
+.intro>h2{
+  font-size: 6vw;
+}
+.intro>p{
   font-size: 2vw;
-  font-family: 'Maven Pro';
-  color: white;
-  text-align: center;
-  margin-top: 10%;
-  }
-  
-  .tendance {
-  display: flex;
-  justify-content: center;
-  margin:auto;
-  max-width: 65%;
-  }
-  .tendance-item {
-    background-size: cover;
-    background-position:center;
-  }
-  
-  .tendance-txt{
-  padding: 5rem;
-  font-size: 2rem;
-  text-align: justify;
-  }
-  .tendance-txt a {
-  color: rgb(0,150,255);
-  text-transform: uppercase;
-  }
-  
-  h3 {
+}
+.buttons{
+  font-size: 2vw;
+}
+
+/*arrow*/
+#arrow{
+  display: none;
+}
+
+/* elements */
+#elements>div h2{
   font-size: 5vw;
-  font-family: 'Bebas Neue';
-  color: white;
-  }
-  .img>img{
-  flex-basis: 40%;
-  min-width: 30rem;
-  }
-  .tendance-img{
-  display: flex;
-  justify-content: flex-end;
-  padding: 0rem 5rem 0rem 5rem;
-  align-items: center;
-  justify-content: center;
-  }
-  
-  .tendance-img span{
-  font-size: 3rem;
-  background-color: RGBA(0,0,0,0.6);
-  color: white;
-  text-align: center;
-  padding: 2rem;
-  }
-  
-  .tendance-reverse{
-  flex-direction: row-reverse;
-  }
-  
-  
-  .video{
-  padding: 0rem 0rem 0rem 5rem;
-  }
-  iframe {
-  min-width: 90%;
-  min-height: 30rem;
-  }
-  
-  
-  /* AVANTAGE CLUB (3pt)*/
-  .adventure {
-  background-image: url("../images/bg-advantage.jpg");
-  background-size: 100%;
-  color: white;
-  }
-  .adventure-info {
-  justify-content: center;
-  align-items: center;
-  max-width: 30%;
-  margin:auto;
-  
-  }
-  .adventure-info p {
-  text-align: center;
-  font-size: 1.3rem;
-  }
-  .adventure a {
-  font-size: 3rem;
-  }
-  
-  /* LA NEWSLETTER (2pt)*/
-  .contact {
-  display: flex;
-  justify-content: space-between;
-  padding: 0rem 20rem 0rem 16rem;
-  align-items: center;
-  margin:auto;
-  background-color: black;
-  color: white;
-  }
-  .contactinfo {
-  display: flex;
-  justify-content: space-between;
-  padding: 0rem 8rem 0rem 15rem;
-  margin:auto;
-  background-color: black;
-  color: white;
-  }
-  .newsletter form {
-  text-align: center;
-  }
-  .newsletter input[type="submit"]{
-  background-color: rgb(0,150,255);
-  text-transform: uppercase;
-  color: white;
-  padding: 1rem;
-  border: 1px solid grey;
-  }
-  
-  /* LE FOOTER  (1pt)*/
-  footer {
-  text-align: center;
-  
-  
-  }
-  
-  
-  
-  
+  text-align: right;
+  cursor: pointer;
+
+}
+#elements{
+  height: 0vw;
+  margin-top: 1.4vw;
+}
+
+/*pop ups toggle */
+/*concept*/
+.concept>p{
+  font-size: 1.5vw;
+  padding: 5%;
+}
+.concept.active{
+  width: 30%;
+}
+
+/*programme*/
+.programme>p{
+  font-size: 1.5vw;
+  padding: 5%;
+}
+.programme.active{
+  width: 30%;
+}
+}

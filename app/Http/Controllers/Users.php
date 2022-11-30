@@ -175,7 +175,7 @@ class Users extends Controller
                             ->color(254,250,221)
                             ->backgroundcolor(13,15,44)
                             ->generate($lienimg);
-            return view('invitation',['url'=>$lienimg,'qrcode'=>$qrcode,"prenom"=>$result->first()->prenom]);
+            return view('invitation',['url'=>$lienimg,'qrcode'=>$qrcode,"prenom"=>$result->first()->prenom,'id'=>$id]);
         }else{
             return redirect('/genqrcode');
         }

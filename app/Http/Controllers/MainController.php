@@ -14,13 +14,25 @@ class MainController extends Controller
             $user=UsersDB::where('remember', '=', $c)->get();
             if ($user->count()!=0){
                 session()->put('id',$user->first()->id);
-                return view('index');
+                $url=url('/');
+                $id=session('id');
+                $layout="layouts.topJC";
+                return view('index',['url'=>$url,'id'=>$id,'layout'=>$layout]);
             }}
-        return view('index');
+        $url=url('/');
+        if(session('id')){
+        $id=session('id');
+        $layout="layouts.topJC";
+        return view('index',['url'=>$url,'id'=>$id,'layout'=>$layout]);
+        }else{
+            $layout="layouts.topJ";
+            return view('index',['url'=>$url,'layout'=>$layout]);
+        }
     }
 
     public function mauvaisuser(){
         $url=url('/');
-        return view('mauvaisuser',['url'=>$url]);
+        $id=session('id');
+        return view('mauvaisuser',['url'=>$url,'id'=>$id]);
     }
 }

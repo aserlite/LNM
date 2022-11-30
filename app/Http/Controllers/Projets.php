@@ -10,14 +10,19 @@ use App\Models\UsersDB;
 class Projets extends Controller
 {
     public function afficher($i){
-        $nbskip=$i*10-10;
-        $projets=ProjetsDB::select("projets.*","user.nom as nom","user.prenom as prenom")
-                            ->orderby('dateEcrit', 'desc')
-                            ->skip($nbskip)
-                            ->take(10)
-                            ->join('user','user.id','=','projets.idAuteur')
-                            ->get();
-        return view('projets',['projets'=>$projets,'nbpage'=>$i,'url'=>url("/projets/")."/"]);
+        if(session('id')){
+            $nbskip=$i*10-10;
+            $projets=ProjetsDB::select("projets.*","user.nom as nom","user.prenom as prenom")
+                                ->orderby('dateEcrit', 'desc')
+                                ->skip($nbskip)
+                                ->take(10)
+                                ->join('user','user.id','=','projets.idAuteur')
+                                ->get();
+            return view('projets',['projets'=>$projets,'nbpage'=>$i,'url'=>url("/projets/")."/",'id'=>session('id')]);
+        } else {
+            return redirect('/login');}
+
+        
     }
 
     public function redirectP(){
@@ -64,21 +69,24 @@ class Projets extends Controller
         }
     }    
     public function afficherCreations($i){
-        if(session('id')==$i){
-            $myacc=TRUE;
-        }else{
-            $myacc=FALSE;
-        }
-            $projets=ProjetsDB::where('idAuteur', '=', $i)
-                                ->orderby('dateEcrit', 'asc')
-                                ->get();
-            $auteur=UsersDB::where('id', '=', $i)->get();
-            $auteur=$auteur->first();
-            if(isset($auteur)){
-                return view('createur',['projets'=>$projets,'auteur'=> $auteur,'myacc'=>$myacc]);
+        if(session('id')){
+            if(session('id')==$i){
+                $myacc=TRUE;
             }else{
-                return redirect('/projets');
+                $myacc=FALSE;
             }
+                $projets=ProjetsDB::where('idAuteur', '=', $i)
+                                    ->orderby('dateEcrit', 'asc')
+                                    ->get();
+                $auteur=UsersDB::where('id', '=', $i)->get();
+                $auteur=$auteur->first();
+                if(isset($auteur)){
+                    return view('createur',['projets'=>$projets,'auteur'=> $auteur,'myacc'=>$myacc,'id'=>session('id')]);
+                }else{
+                    return redirect('/projets');
+                }
+        }
+        return redirect('/login');
     }
     
 }

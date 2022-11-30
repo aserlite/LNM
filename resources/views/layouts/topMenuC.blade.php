@@ -1,18 +1,21 @@
 <header>
   <nav class="navbar">
     <div class="logo">
-      <a href=""><img id="logo" src="../images/logo.png"></a>
+      <a href="/"><img id="logo" src="../images/logo.png"></a>
       </div>
 
     <ul class="nav-menu">
       <li class="nav-item">
-        <a href="/" class="nav-link">Home</a>
+        <a href="/publish" class="nav-link">Publier</a>
       </li>
       <li class="nav-item">
-        <a href="/login" class="nav-link">Login</a>
+        <a href="/portfolio" class="nav-link">Portfolio</a>
       </li>
       <li class="nav-item">
-        <a href="/register" class="nav-link">Register</a>
+        <a href="/projets" class="nav-link">Projets</a>
+      </li>
+      <li class="nav-item">
+        <a href="/createur/{{$id}}" class="nav-link">Profil</a>
       </li>
     </ul>
 
