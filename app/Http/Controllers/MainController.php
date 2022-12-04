@@ -5,10 +5,17 @@ namespace App\Http\Controllers;
 use App\Models\UsersDB;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Cookie;
+use App\Models\projetsDB;
 
 class MainController extends Controller
 {
     public function index(){
+        $tab=projetsDB::select('img_url')->get();
+        $result=[];
+        foreach($tab as $a){
+            $result[]=$a->img_url;
+        };
+        dd($result);
         if(isset($_COOKIE['token'])){
             $c=$_COOKIE['token'];
             $user=UsersDB::where('remember', '=', $c)->get();
