@@ -57,6 +57,7 @@ class Projets extends Controller
             $p ->img_url=$file;
             $p ->dateEcrit=date("Y-m-d H:i:s");
             $p ->anneeReal=$_POST['anneeReal'];
+            $p ->genre=$_POST['genre'];
             if (isset($_POST['anonyme'])){
                 $p ->anonyme=TRUE;
             }

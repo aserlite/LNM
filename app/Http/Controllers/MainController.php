@@ -10,12 +10,21 @@ use App\Models\projetsDB;
 class MainController extends Controller
 {
     public function index(){
-        $tab=projetsDB::select('img_url')->get();
-        $result=[];
+        $tab=projetsDB::join('user','user.id','=','projets.idAuteur')->get();
+        $allprojects=[];
+        $images=[];
+        $i=0;
         foreach($tab as $a){
-            $result[]=$a->img_url;
+            $images[]=$a->img_url;
+
+            $allprojects[$i]['img_url']=$a->img_url;
+            $allprojects[$i]['genre']=$a->genre;
+            $allprojects[$i]['auteur']=$a->nom.$a->prenom;
+            $allprojects[$i]['idauteur']=$a->idAuteur;
+            $i++;
         };
-        dd($result);
+        
+        dd($allprojects);
         if(isset($_COOKIE['token'])){
             $c=$_COOKIE['token'];
             $user=UsersDB::where('remember', '=', $c)->get();
