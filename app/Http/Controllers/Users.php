@@ -142,13 +142,13 @@ class Users extends Controller
     }
 
     public function checkqrcode($token){
-        $admins=[1,5,12];
+        $admins=[1,5,12,4];
         if(in_array(session('id'),$admins)){
             if(strlen($token)==60){
                 $result=UsersDB::select('nom','prenom','QrCodeUsed')->where('qrcodetoken',$token)->get();
                 if($result->count()==1 ){
                     if($result->first()->QrCodeUsed === 0){
-                        $updateentrée=UsersDB::where('qrcodetoken',$token)->update(['QrCodeUsed'=>TRUE]);
+                        $updateentrée=UsersDB::where('qrcodetoken',$token)->update(['QrCodeUsed'=>TRUE,'dtcheck'=>date("Y-m-d H:i:s")]);
                         return view('qrcodebon',['prenom'=>$result->first()->prenom,'nom'=>$result->first()->nom]);
                     }else{
                         return view('qrcodefaux',['result'=>'Qr Code deja utilisé']);
